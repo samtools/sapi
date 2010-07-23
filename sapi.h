@@ -135,7 +135,7 @@ extern "C" {
 	int sa_itr_destroy(sa_itr_t *itr);
 
 	/* Read the next alignment from the iterator */
-	const sa_aln_t *sa_next(sa_itr_t *itr);
+	int sa_next(sa_itr_t *itr, sa_aln_t *aln);
 
 	/* Write an alignment to a file */
 	int sa_write(sa_file_t *fp, const sa_aln_t *aln);

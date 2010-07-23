@@ -143,12 +143,6 @@ extern "C" {
 	/* Write the header */
 	int sa_write_header(sa_file_t *fp);
 
-	/* Build the index */
-	int sa_build_index(sa_file_t *fp);
-
-	/* Explicitly load index */
-	int sa_read_index(sa_file_t *fp, int mode);
-
 	/* Get key header information */
 	const sa_hdrinfo_t *sa_get_hdrinfo(const sa_file_t *fp);
 
@@ -157,6 +151,12 @@ extern "C" {
 
 	/* Convert string reference name to integer ID */
 	int sa_refname2id(sa_file_t *fp, const char *refname);
+
+	int sa_get_supported_index_types(sa_file_t *fp, /*OUT*/ int **indexes, /*OUT*/ int *n_indexes);
+	int sa_build_index(sa_file_t *fp, int index_type);
+	int sa_get_indexes(sa_file_t *fp, /*OUT*/ int **indexes, /*OUT*/ int *n_indexes);
+	int sa_use_index(sa_file_t *fp, int index_type);
+	int sa_unload_index(sa_file_t *fp);
 
 #ifdef __cplusplus
 }
